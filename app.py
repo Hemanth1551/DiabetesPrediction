@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from authlib.integrations.flask_client import OAuth
 import pickle
-import os
 
 # import numpy as np
 
@@ -17,7 +16,8 @@ oauth = OAuth(app)
 google = oauth.register(
     name='google',
 
-
+    client_id='700483157373-b2t0diu3ti8ob71q5rdq5o4krknapiid.apps.googleusercontent.com',
+    client_secret='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',
     server_metadata_url='https://accounts.google.com/.well-known/openid-configuration',
     api_base_url='https://www.googleapis.com/oauth2/v1/',
     client_kwargs={
