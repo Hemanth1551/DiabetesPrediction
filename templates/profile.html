@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/179f43bc7a.js" crossorigin="anonymous"></script>
+
     <title>Document</title>
 </head>
 <body>
@@ -13,8 +15,8 @@
         <h1>Welcome, {{user}}</h1>
     <img src="{{profile_image}}" alt="Profile Image" style="border-radius:50%;width:100px;height:100px;">
     <br>
-        <button><a href="/diabetes" class="button">Go to Diabetes Prediction</a></button><br>
-        <button><a href="/logout" class="button">Logout</a></button>
+        <button><a href="/diabetes" class="button">Go to Diabetes Prediction <i class="fa-solid fa-arrow-right"></i></a></button><br>
+        <button><a href="/logout" class="button">Logout <i class="fa-solid fa-arrow-right"></i></a></button>
 
     </div>
 
@@ -44,24 +46,32 @@
         color: black;
     }
     button {
-        font-family: "Poppins", serif;
-
-  color: #090909;
-  padding: 0.7em 1.7em;
-  font-size: 18px;
-  border-radius: 0.5em;
-  background: #e8e8e8;
+  border: none;
+  width: 264px;
+  height: 51px;
+  margin: auto;
+  margin-top: 40px;
   cursor: pointer;
-  border: 1px solid #e8e8e8;
-  transition: all 0.3s;
-  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
-  margin-top: 30px;
-}
-
-button:active {
-  color: #666;
-  box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
-}
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: #333;
+  font-size: 15px;
+  color: #fff;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s; }
+  button a{
+    color: white;
+  }
+  button i {
+    margin-left: 10px;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0); 
+    color: white;}
 
 
 
