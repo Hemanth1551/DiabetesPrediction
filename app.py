@@ -38,10 +38,9 @@ def index():
     profile_image = session.get('profile_image', None)
     user = session.get('user_name')
 
-    if email:
+    if 'email' in session:
         return render_template('profile.html', user=user, profile_image=profile_image)
     else:
-
         return render_template('login.html')
 
 @app.route('/login')
@@ -52,22 +51,23 @@ def login():
 
 @app.route('/authorize')
 def authorize():
-    try:
-        google = oauth.create_client('google')
-        token = google.authorize_access_token()
-        resp = google.get('userinfo')
-        user_info = resp.json()
+    if 'email' not in session:
+        try:
+            google = oauth.create_client('google')
+            token = google.authorize_access_token()
+            resp = google.get('userinfo')
+            user_info = resp.json()
 
-        if not user_info or 'email' not in user_info:
-            return "Failed to fetch user info", 400
+            if not user_info or 'email' not in user_info:
+                return "Failed to fetch user info", 400
 
-        session['email'] = user_info['email']
-        session['profile_image'] = user_info.get('picture', None)
-        session['user_name'] = user_info.get('name', None)
+            session['email'] = user_info['email']
+            session['profile_image'] = user_info.get('picture', None)
+            session['user_name'] = user_info.get('name', None)
 
-        return redirect('/')
-    except Exception as e:
-        return f"Error: {str(e)}", 500
+            return redirect('/')
+        except Exception as e:
+            return f"Error: {str(e)}", 500
 
 @app.route('/logout')
 def logout():
